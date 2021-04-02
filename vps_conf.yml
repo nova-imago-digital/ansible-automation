@@ -7,13 +7,18 @@
   - name: Actualiza el index de los repositorios
     apt:
       update_cache: yes
+    when: ansible_distribution in ["Debian", "Ubuntu"]
+
 
   - name: Instalar Unattended Upgrades
     apt:
       name: unattended-upgrades
       state: latest
+     when: ansible_distribution in ["Debian", "Ubuntu"]
+
 
   - name: Instalar net-tools
     apt:
       name: net-tools
       state: latest
+    when: ansible_distribution in ["Debian", "Ubuntu"]
