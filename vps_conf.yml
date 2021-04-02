@@ -13,3 +13,12 @@
       state: latest
       update_cache: yes
    #when: ansible_distribution in ["Debian", "Ubuntu"]
+
+
+  - name: Copiar archivo de configuración SSH
+    copy:
+      src: sshd_config
+      dest: /etc/ssh/sshd_config
+      owner: root
+      group: root
+      mode: 0644
