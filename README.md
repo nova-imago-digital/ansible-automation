@@ -1,3 +1,3 @@
 # ansible-automation
 
-Este es un repositorio de automitización con Ansible
+Este es un repositorio de automatización con Ansible
