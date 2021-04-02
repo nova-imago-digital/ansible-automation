@@ -1,24 +1,15 @@
 ---
 
-- hosts: all
+- hosts: cyberpanel
   become: true
   tasks:
 
-  - name: Actualiza el index de los repositorios
+  - name: Instalar Unattended Upgrades, Agente Zabbix, Net Tools
     apt:
+      name:
+        - unattended-upgrades
+        - zabbix-agent
+        - net-tools
+      state: latest
       update_cache: yes
-    when: ansible_distribution in ["Debian", "Ubuntu"]
-
-
-  - name: Instalar Unattended Upgrades
-    apt:
-      name: unattended-upgrades
-      state: latest
-     when: ansible_distribution in ["Debian", "Ubuntu"]
-
-
-  - name: Instalar net-tools
-    apt:
-      name: net-tools
-      state: latest
-    when: ansible_distribution in ["Debian", "Ubuntu"]
+   #when: ansible_distribution in ["Debian", "Ubuntu"]
