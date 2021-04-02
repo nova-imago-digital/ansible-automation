@@ -1,0 +1,19 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: Actualiza el index de los repositorios
+    apt:
+      update_cache: yes
+
+  - name: Instalar Unattended Upgrades
+    apt:
+      name: unattended-upgrades
+      state: latest
+
+  - name: Instalar net-tools
+    apt:
+      name: net-tools
+      state: latest
