@@ -1,11 +1,9 @@
 [zabbix]
 45.33.115.77		ansible_python_interpreter=/usr/bin/python3
 
-[cyberpanel]
+[web_servers]
 172.104.4.188		ansible_python_interpreter=/usr/bin/python3
 172.104.213.203		ansible_python_interpreter=/usr/bin/python3
 97.107.128.75		ansible_python_interpreter=/usr/bin/python3
-
-[prueba]
 45.56.69.75		ansible_python_interpreter=/usr/bin/python3
 

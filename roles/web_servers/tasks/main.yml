@@ -1,0 +1,44 @@
+- name: Instalar Unattended Upgrades, Agente Zabbix, Net Tools
+  apt:
+   name:
+    - unattended-upgrades
+    - zabbix-agent
+    - net-tools
+   state: latest
+   update_cache: yes
+  #when: ansible_distribution in ["Debian", "Ubuntu"]
+
+- name: Copiar archivo de configuración agente Zabbix
+  copy:
+    src: zabbix_agentd.conf
+    dest: /etc/zabbix/zabbix_agentd.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Inicia y habilita el agente Zabbix
+  service:
+    name: zabbix-agent
+    state: started
+    enabled: yes
+
+- name: Copiar archivo de configuración Unattended Upgrades, omite dovecot
+  copy:
+    src: 50unattended-upgrades
+    dest: /etc/apt/apt.conf.d/50unattended-upgrades
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copiar archivo de configuración SSH
+  copy:
+    src: sshd_config
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Reinicia servicio SSH
+  service:
+    name: sshd
+    state: restarted

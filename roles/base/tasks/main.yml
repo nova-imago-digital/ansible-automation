@@ -1,0 +1,17 @@
+- name: Crear usuario rmartinez
+  user:
+    name: rmartinez
+    groups: root
+
+- name: Agrega Llave SSH para rmartinez
+  authorized_key:
+    user: rmartinez
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMPBo3gKF98oTUGYeIe1XpmpkDOsXtBQAkb5166PzMOw tu mismo"
+
+- name: Agrega archivo sudoers para rmartinez
+  copy:
+    src: sudoer_rmartinez
+    dest: /etc/sudoers.d/rmartinez
+    owner: root
+    group: root
+    mode: 0440

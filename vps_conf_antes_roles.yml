@@ -1,0 +1,56 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: Crea usuario rmartinez
+    user:
+      name: rmartinez
+      groups: root
+
+
+  - name: Agrega Llave SSH para rmartinez
+    authorized_key:
+      user: rmartinez
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMPBo3gKF98oTUGYeIe1XpmpkDOsXtBQAkb5166PzMOw tu mismo"
+
+
+  - name: Agrega archivo sudoers para rmartinez
+    copy:
+      src: sudoer_rmartinez
+      dest: /etc/sudoers.d/rmartinez
+      owner: root
+      group: root
+      mode: 0440
+
+
+- hosts: cyberpanel 
+  become: true
+  tasks:
+
+  - name: Instalar Unattended Upgrades, Agente Zabbix, Net Tools
+    apt:
+      name:
+        - unattended-upgrades
+        - zabbix-agent
+        - net-tools
+      state: latest
+      update_cache: yes
+   #when: ansible_distribution in ["Debian", "Ubuntu"]
+
+  - name: Copiar archivo de configuración Unattended Upgrades, omite dovecot
+    copy:
+      src: 50unattended-upgrades
+      dest: /etc/apt/apt.conf.d/50unattended-upgrades
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: Copiar archivo de configuración SSH
+    copy:
+      src: sshd_config
+      dest: /etc/ssh/sshd_config
+      owner: root
+      group: root
+      mode: 0644
