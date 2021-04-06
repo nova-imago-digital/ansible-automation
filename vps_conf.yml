@@ -4,19 +4,21 @@
   become: true
   pre_tasks:
 
-  - name: Actualiza el índice de los repositorios (Ubuntu)
+  - name: Descargar repo Ubuntu 20.04
+    get_url:
+     url: https://repo.zabbix.com/zabbix/5.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_5.2-1+ubuntu20.04_all.deb
+     dest: /home/rmartinez/
+     mode: '0664'
+
+  - name: Agrega repo a source list
+    shell: dpkg -i /home/rmartinez/zabbix-release_5.2-1+ubuntu20.04_all.deb
+    become: true
+    become_method: sudo
+
+  - name: Actualizar el índice de los repositorios (Ubuntu)
     tags: siempre
     apt:
-      update_cache: yes
-    changed_when: false
-    when: ansible_distribution == "Ubuntu"
-
-  - name: Actualiza el índice de los repositorios (CentOS)
-    tags: siempre
-    dnf:
-      update_cache: yes
-    changed_when: false
-    when: ansible_distribution == "CentOS"  
+     update_cache: yes
 
 - hosts: all
   become: true
