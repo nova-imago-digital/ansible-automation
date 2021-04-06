@@ -16,6 +16,11 @@
     group: root
     mode: 0440
 
+- name: Configurar zona horaria America/Santiago
+  timezone:
+    name: America/Santiago
+
+
 - name: Instalar Unattended Upgrades, Agente Zabbix2, Net Tools, Tmux
   apt:
    name:
