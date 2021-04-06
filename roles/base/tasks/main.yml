@@ -21,13 +21,14 @@
     name: America/Santiago
 
 
-- name: Instalar Unattended Upgrades, Agente Zabbix2, Net Tools, Tmux
+- name: Instalar Unattended Upgrades, Agente Zabbix2, Net Tools, Tmux, Neofetch
   apt:
    name:
     - unattended-upgrades
     - zabbix-agent2
     - net-tools
     - tmux
+    - neofetch
    state: latest
    update_cache: yes
   #when: ansible_distribution in ["Debian", "Ubuntu"]
