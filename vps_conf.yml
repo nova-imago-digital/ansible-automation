@@ -4,17 +4,6 @@
   become: true
   pre_tasks:
 
-  - name: Descargar repo Ubuntu 20.04
-    get_url:
-     url: https://repo.zabbix.com/zabbix/5.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_5.2-1+ubuntu20.04_all.deb
-     dest: /home/rmartinez/
-     mode: '0664'
-
-  - name: Agrega repo a source list
-    shell: dpkg -i /home/rmartinez/zabbix-release_5.2-1+ubuntu20.04_all.deb
-    become: true
-    become_method: sudo
-
   - name: Actualizar el índice de los repositorios (Ubuntu)
     tags: siempre
     apt:
@@ -25,10 +14,15 @@
   roles:
     - base
 
-- hosts: web_servers
+- hosts: cyberpanel
   become: true
   roles:
-    - web_servers
+    - cyberpanel
+
+- hosts: web_servers_lemp
+  become: true
+  roles:
+    - web_servers_lemp
 
 - hosts: db_servers
   become: true

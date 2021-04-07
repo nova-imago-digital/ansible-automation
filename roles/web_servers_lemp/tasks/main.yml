@@ -1,0 +1,24 @@
+
+- name: Instalar Nginx, PHP, Mariadb client y server
+  apt:
+   name:
+    - php-mbstring
+    - php-xml
+    - php-fpm
+    - php-zip
+    - php-common
+    - php-cli
+    - unzip
+    - curl
+    - nginx
+    - php7.4-curl
+    - mariadb-client
+    - mariadb-server
+   state: latest
+   update_cache: yes
+
+- name: Inicia y habilita Mariadb
+  service:
+    name: mariadb
+    state: started
+    enabled: yes

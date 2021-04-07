@@ -21,7 +21,7 @@ Unattended-Upgrade::Allowed-Origins {
 Unattended-Upgrade::Package-Blacklist {
     // The following matches all packages starting with linux-
 //  "linux-";
-"dovecot";
+
     // Use $ to explicitely define the end of a package name. Without
     // the $, "libc6" would match all of them.
 //  "libc6$";
