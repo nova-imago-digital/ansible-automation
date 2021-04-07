@@ -6,4 +6,4 @@
 172.104.213.203		ansible_python_interpreter=/usr/bin/python3
 97.107.128.75		ansible_python_interpreter=/usr/bin/python3
 45.56.69.75		ansible_python_interpreter=/usr/bin/python3
-
+172.104.194.85          ansible_python_interpreter=/usr/bin/python3
