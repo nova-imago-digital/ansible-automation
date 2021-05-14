@@ -35,7 +35,7 @@
   timezone:
     name: America/Santiago
 
-- name: Instalar Unattended Upgrades, Agente Zabbix2, Net Tools, Tmux, Neofetch, Tree
+- name: Instalar Unattended Upgrades, Agente Zabbix2, Net Tools, Tmux, Neofetch, Tree, Htop
   apt:
    name:
     - unattended-upgrades
@@ -44,8 +44,27 @@
     - tmux
     - neofetch
     - tree
+    - htop
    state: latest
    update_cache: yes
+
+
+- name: Copiar archivo de configuración Unattended Upgrades, omite dovecot
+  copy:
+    src: 50unattended-upgrades
+    dest: /etc/apt/apt.conf.d/50unattended-upgrades
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copiar archivo de configuración Auto Upgrades
+  copy:
+    src: 20auto-upgrades
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+    owner: root
+    group: root
+    mode: 0644
+
 
 - name: Copiar archivo de configuración agente Zabbix
   copy:
@@ -58,7 +77,7 @@
 - name: Inicia y habilita el agente Zabbix
   service:
     name: zabbix-agent2
-    state: started
+    state: restarted
     enabled: yes
 
 - name: Copiar archivo de configuración SSH
