@@ -16,7 +16,7 @@
 - name: Agrega Llave SSH para rmartinez
   authorized_key:
     user: rmartinez
-    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMPBo3gKF98oTUGYeIe1XpmpkDOsXtBQAkb5166PzMOw tu mismo"
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBieHoXEyJZUmUfmovn1htOzW4VYJdi7/E7xmbm/LaWB laptop"
 
 - name: Agrega Llave SSH para ansible
   authorized_key:
