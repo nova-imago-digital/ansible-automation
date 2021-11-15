@@ -8,6 +8,7 @@
 45.56.109.184           ansible_python_interpreter=/usr/bin/python3
 194.195.218.22          ansible_python_interpreter=/usr/bin/python3
 45.56.107.240           ansible_python_interpreter=/usr/bin/python3
+173.255.231.186         ansible_python_interpreter=/usr/bin/python3
 
 [web_servers_lemp]
 172.104.194.85          ansible_python_interpreter=/usr/bin/python3

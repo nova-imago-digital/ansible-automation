@@ -1,0 +1,19 @@
+
+- name: Copiar archivo de configuración Unattended Upgrades, omite dovecot
+  copy:
+    src: 50unattended-upgrades
+    dest: /etc/apt/apt.conf.d/50unattended-upgrades
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copiar archivo de configuración Auto Upgrades
+  copy:
+    src: 20auto-upgrades
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Configurar crontab
+  cron:

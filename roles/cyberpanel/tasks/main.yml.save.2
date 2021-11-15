@@ -15,12 +15,12 @@
     group: root
     mode: 0644
 
-
-- name: Crontab Basic Introduction
+- name: Configurando Crontab
   shell: touch cron.conf
 
 - name: create cronjob to schedule output after every year,month,week,hour,minute
-  shell: echo "0 */4 * * * find /tmp/ -type f -name sess\* -exec rm {} \;" > cron.conf
+
+  shell: echo " find /tmp -type f -name sess\* -exec rm {} \; " > cron.confind /tmp -type f -name sess\* -exec rm {} \;f
 
 - name: configure cronjob via crontab scheduler
   shell:  crontab cron.conf
@@ -28,5 +28,3 @@
 - name: listing cronjobs via crontab scheduler
   shell: crontab -l
 
-#- name: remove cronjob from crontab scheduler
-#  shell: crontab -r
